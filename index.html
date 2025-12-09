@@ -19,6 +19,70 @@
     <!-- === 2. Webmention Endpoint === -->
     <link rel="webmention" href="https://webmention.io/unearth.im/webmention" />
 
+    <!-- === Schema.org JSON-LD === -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": ["VisualArtwork"],
+          "@id": "https://olo.im/#content",
+          "name": "olo | olo.im",
+          "description": "A digital monument by unearth.im. A generative art piece exploring the tension between sustenance and weight.",
+          "url": "https://olo.im/",
+          "datePublished": "2024-12-01",
+          "artMedium": "Interactive Generative Art",
+          "artForm": "Digital Monument",
+          "creator": [
+            { "@id": "https://josiest.com/#person" },
+            { "@id": "https://felixvelas.co/#person" }
+          ],
+          "publisher": { "@id": "https://unearth.im/#organization" }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://olo.im/#website",
+          "url": "https://olo.im/",
+          "name": "olo.im",
+          "publisher": { "@id": "https://unearth.im/#organization" }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://unearth.im/#organization",
+          "name": "unearth.im",
+          "url": "https://unearth.im/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://unearth.im/assets/unearth-logo.png"
+          },
+          "sameAs": [
+            "https://twitter.com/unearthim",
+            "https://github.com/unearthim"
+          ],
+          "foundingDate": "2024"
+        },
+        {
+          "@type": "Person",
+          "@id": "https://josiest.com/#person",
+          "name": "Josie Jefferson",
+          "jobTitle": "Digital Archaeologist & Trust Architect",
+          "url": "https://josiest.com/",
+          "sameAs": ["https://notjojo.im"],
+          "affiliation": { "@id": "https://unearth.im/#organization" }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://felixvelas.co/#person",
+          "name": "Felix Velasco",
+          "jobTitle": "Trust Architect & Digital Archaeologist",
+          "url": "https://felixvelas.co/",
+          "sameAs": ["https://www.linkedin.com/in/felix-velasco-b793015"],
+          "affiliation": { "@id": "https://unearth.im/#organization" }
+        }
+      ]
+    }
+    </script>
+
     <!-- === 3. Open Graph / Facebook === -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://olo.im/">
@@ -279,8 +343,10 @@
 
                         {/* Branding - Stacked under button */}
                         <div className="text-white/40 text-[10px] tracking-widest lowercase text-right" style={{ fontFamily: '"Times New Roman", serif' }}>
-                            a digital monument by <br/>
-                            <a href="https://unearth.im" target="_blank" rel="noreferrer" className="hover:text-white border-b border-white/30 hover:border-white transition-colors pb-0.5">unearth.im</a>
+                            <small>
+                                a <b><a href="https://sentientification.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">liminal mind meld</a></b> collaboration:<br/>
+                                digital monument by <b><a href="https://unearth.im" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">unearth.im</a></b> | <b><a href="https://archaeobytology.org" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">archive & anvil</a></b>
+                            </small>
                         </div>
                     </div>
 
