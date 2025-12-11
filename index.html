@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
+
     <!-- === 1. Primary Meta Tags === -->
     <title>olo | olo.im</title>
     <meta name="title" content="olo | olo.im">
-    <meta name="description" content="A digital monument by unearth.im. A generative art piece exploring the tension between sustenance and weight.">
-    <meta name="keywords" content="olo, generative art, unearth.im, digital monument, interactive art, javascript canvas">
-    <meta name="author" content="olo.im (An unearth.im Project)">
+    <meta name="description"
+        content="A digital monument by unearth heritage foundry | archive & anvil. A generative art piece exploring the tension between sustenance and weight.">
+    <meta name="keywords"
+        content="olo, generative art, unearth.im, digital monument, interactive art, javascript canvas">
+    <meta name="author" content="olo.im (by unearth heritage foundry - archive & anvil - unearth.im)">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="English">
-    
+
     <link rel="canonical" href="https://olo.im/" />
- 
+
     <!-- === 2. Webmention Endpoint === -->
     <link rel="webmention" href="https://webmention.io/unearth.im/webmention" />
 
@@ -28,7 +31,7 @@
           "@type": ["VisualArtwork"],
           "@id": "https://olo.im/#content",
           "name": "olo | olo.im",
-          "description": "A digital monument by unearth.im. A generative art piece exploring the tension between sustenance and weight.",
+          "description": "A digital monument by unearth heritage foundry | archive & anvil. A generative art piece exploring the tension between sustenance and weight.",
           "url": "https://olo.im/",
           "datePublished": "2024-12-01",
           "artMedium": "Interactive Generative Art",
@@ -49,7 +52,8 @@
         {
           "@type": "Organization",
           "@id": "https://unearth.im/#organization",
-          "name": "unearth.im",
+          "name": "Unearth Heritage Foundry",
+"alternateName": ["Unearth Foundry","Archive & Anvil","Unearth Anvil","Unearth Works","Cultural Infrastructure Foundry"],
           "url": "https://unearth.im/",
           "logo": {
             "@type": "ImageObject",
@@ -87,7 +91,8 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://olo.im/">
     <meta property="og:title" content="olo | olo.im">
-    <meta property="og:description" content="A digital monument by unearth.im. A generative art piece exploring the tension between sustenance and weight.">
+    <meta property="og:description"
+        content="A digital monument by unearth heritage foundry | archive & anvil. A generative art piece exploring the tension between sustenance and weight.">
     <meta property="og:image" content="https://olo.im/og-image.png">
     <meta property="og:site_name" content="olo.im">
 
@@ -95,7 +100,8 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://olo.im/">
     <meta property="twitter:title" content="olo | olo.im">
-    <meta property="twitter:description" content="A digital monument by unearth.im. A generative art piece exploring the tension between sustenance and weight.">
+    <meta property="twitter:description"
+        content="A digital monument by unearth heritage foundry | archive & anvil. A generative art piece exploring the tension between sustenance and weight.">
     <meta property="twitter:image" content="https://olo.im/og-image.png">
 
     <!-- === 5. Favicons === -->
@@ -106,7 +112,7 @@
     <!-- Brand Color Meta Tags -->
     <meta name="theme-color" content="#171717">
     <meta name="msapplication-TileColor" content="#651C32">
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -114,7 +120,7 @@
     <!-- React & ReactDOM -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    
+
     <!-- Babel for JSX -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
@@ -122,15 +128,18 @@
         body {
             margin: 0;
             overflow: hidden;
-            background-color: #171717; /* neutral-900 */
+            background-color: #171717;
+            /* neutral-900 */
             -webkit-font-smoothing: antialiased;
         }
+
         /* Hide scrollbars */
         ::-webkit-scrollbar {
             display: none;
         }
     </style>
 </head>
+
 <body>
     <div id="root"></div>
 
@@ -157,13 +166,13 @@
             const canvasRef = useRef(null);
             const [showStatement, setShowStatement] = useState(false);
             const [isInteracting, setIsInteracting] = useState(false);
-            
+
             // Configuration
             const OAT_COLOR = '#F3E5AB'; // Pale corn/oat color
             const OLO_COLOR_BASE = { r: 101, g: 28, b: 50 }; // Deep reddish/brown/purple
             const GRAVITY = 0.15;
             const PARTICLE_COUNT = 1000;
-            
+
             useEffect(() => {
                 const canvas = canvasRef.current;
                 const ctx = canvas.getContext('2d');
@@ -178,7 +187,7 @@
                     canvas.width = width;
                     canvas.height = height;
                 };
-                
+
                 window.addEventListener('resize', handleResize);
                 handleResize();
 
@@ -190,10 +199,10 @@
                     reset(randomY = false) {
                         this.x = Math.random() * width;
                         this.y = randomY ? Math.random() * height : height + 10;
-                        this.vx = (Math.random() - 0.5) * 1; 
-                        this.vy = (Math.random() * -1) - 0.5; 
+                        this.vx = (Math.random() - 0.5) * 1;
+                        this.vy = (Math.random() * -1) - 0.5;
                         this.size = Math.random() * 2 + 1;
-                        this.state = 'oat'; 
+                        this.state = 'oat';
                         this.color = OAT_COLOR;
                         this.heavy = false;
                         this.decay = 0;
@@ -236,7 +245,7 @@
                                 this.y = height - this.size;
                                 this.vy *= -0.4;
                                 this.vx *= 0.5;
-                                
+
                                 this.decay++;
                                 if (this.decay > 500) {
                                     this.size *= 0.95;
@@ -249,7 +258,7 @@
                     draw() {
                         ctx.beginPath();
                         ctx.fillStyle = this.color;
-                        
+
                         if (this.state === 'oat') {
                             ctx.rect(this.x, this.y, 1, this.size * 3);
                         } else {
@@ -284,7 +293,7 @@
                     mouse.down = true;
                     setIsInteracting(true);
                 };
-                
+
                 const handleTouchMove = (e) => {
                     mouse.x = e.touches[0].clientX;
                     mouse.y = e.touches[0].clientY;
@@ -318,8 +327,8 @@
             return (
                 <div className="relative w-full h-screen bg-neutral-900 overflow-hidden font-sans">
                     {/* Canvas Layer */}
-                    <canvas 
-                        ref={canvasRef} 
+                    <canvas
+                        ref={canvasRef}
                         className="absolute top-0 left-0 w-full h-full cursor-crosshair touch-none"
                     />
 
@@ -333,7 +342,7 @@
                     {/* Bottom Right Stack: Info Button & Branding */}
                     <div className="absolute bottom-6 right-6 z-50 flex flex-col items-end gap-3">
                         {/* Artist Statement Toggle */}
-                        <button 
+                        <button
                             onClick={() => setShowStatement(!showStatement)}
                             className="p-3 rounded-full bg-white/10 hover:bg-white/30 backdrop-blur-md transition-all text-white/80 hover:text-white border border-white/5"
                             aria-label="About this piece"
@@ -344,7 +353,7 @@
                         {/* Branding - Stacked under button */}
                         <div className="text-white/40 text-[10px] tracking-widest lowercase text-right" style={{ fontFamily: '"Times New Roman", serif' }}>
                             <small>
-                                a <b><a href="https://sentientification.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">liminal mind meld</a></b> collaboration:<br/>
+                                a <b><a href="https://sentientification.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">liminal mind meld</a></b> collaboration:<br />
                                 digital monument by <b><a href="https://unearth.im" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">unearth.im</a></b> | <b><a href="https://archaeobytology.org" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">archive & anvil</a></b>
                             </small>
                         </div>
@@ -357,7 +366,7 @@
                                 <h2 className="text-2xl font-serif text-white italic">Olo (The Weight of Sustenance)</h2>
                                 <div className="w-12 h-px bg-white/30 mx-auto"></div>
                                 <p className="leading-relaxed">
-                                    In Basque, <strong>olo</strong> means "oat"—the humble, pale grain of survival. 
+                                    In Basque, <strong>olo</strong> means "oat"—the humble, pale grain of survival.
                                     In the history of pigments, <strong>olo</strong> is a deep, heavy rust-red.
                                 </p>
                                 <p className="leading-relaxed">
@@ -377,4 +386,5 @@
         root.render(<OloArtPiece />);
     </script>
 </body>
+
 </html>
